@@ -23,3 +23,9 @@
     @apply min-h-screen font-normal text-base font-inter bg-brand-white text-brand-black-900;
   }
 }
+
+@utility homepage-bg {
+  background-image: url('/home-hero.png');
+  background-position: center center;
+  background-size: cover;
+}
