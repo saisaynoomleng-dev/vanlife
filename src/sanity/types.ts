@@ -68,6 +68,21 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type NavMenu = {
+  _id: string;
+  _type: 'navMenu';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  links?: Array<{
+    name?: string;
+    url?: string;
+    _key: string;
+  }>;
+};
+
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -184,6 +199,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | NavMenu
   | BlockContent
   | Van
   | SanityImageCrop
@@ -222,6 +238,14 @@ export type VAN_QUERYResult = {
     } | null;
   } | null;
 } | null;
+// Variable: MAIN_NAV_QUERY
+// Query: *[_type == 'navMenu' && slug.current == 'main-nav-menu'][0]{  links[]{    name,    url} }
+export type MAIN_NAV_QUERYResult = {
+  links: Array<{
+    name: string | null;
+    url: string | null;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -229,5 +253,6 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'van'\n && defined(slug.current)][0...6]{\n    name,\n    type,\n    price,\n    mainImage{\n        alt,\n        asset->{\n            url\n        }\n    },\n    slug,  \n } | order(name)": VANS_QUERYResult;
     "\n    *[_type == 'van'\n && slug.current == $slug][0]{\n    name,\n    type,\n    description,\n    price,\n    mainImage{\n        alt,\n        asset->{\n            url\n        }\n    },\n }": VAN_QUERYResult;
+    "\n    *[_type == 'navMenu'\n && slug.current == 'main-nav-menu'][0]{\n  links[]{\n    name,\n    url}\n }": MAIN_NAV_QUERYResult;
   }
 }
