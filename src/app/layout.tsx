@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { inter } from './_lib/fonts'
+import type { Metadata } from 'next';
+import './globals.css';
+import { inter } from './_lib/fonts';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
@@ -9,16 +10,17 @@ export const metadata: Metadata = {
   },
   description:
     'Vanlife is a van rental services that provide various vans for any type',
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`${inter.variable}`}>{children}</body>
+      <Footer />
     </html>
-  )
+  );
 }
