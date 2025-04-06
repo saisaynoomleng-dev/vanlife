@@ -1,18 +1,18 @@
 import { defineQuery } from 'next-sanity';
 
 export const VANS_QUERY = defineQuery(`*[_type == 'van'
- && defined(slug.current)][0...6]{
-    name,
-    type,
-    price,
-    mainImage{
-        alt,
-        asset->{
-            url
-        }
-    },
-    slug,  
- } | order(name)`);
+   && defined(slug.current)][0...6]{
+      name,
+      type,
+      price,
+      mainImage{
+          alt,
+          asset->{
+              url
+          }
+      },
+      slug,  
+   } | order(name)`);
 
 export const VAN_QUERY = defineQuery(`
     *[_type == 'van'
