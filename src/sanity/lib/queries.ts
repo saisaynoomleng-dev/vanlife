@@ -28,3 +28,11 @@ export const VAN_QUERY = defineQuery(`
         }
     },
  }`);
+
+export const MAIN_NAV_QUERY = defineQuery(`
+    *[_type == 'navMenu'
+ && slug.current == 'main-nav-menu'][0]{
+  links[]{
+    name,
+    url}
+ }`);
