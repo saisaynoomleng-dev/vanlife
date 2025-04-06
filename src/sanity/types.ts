@@ -211,7 +211,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: VANS_QUERY
-// Query: *[_type == 'van' && defined(slug.current)][0...6]{    name,    type,    price,    mainImage{        alt,        asset->{            url        }    },    slug,   } | order(name)
+// Query: *[_type == 'van'   && defined(slug.current)][0...6]{      name,      type,      price,      mainImage{          alt,          asset->{              url          }      },      slug,     } | order(name)
 export type VANS_QUERYResult = Array<{
   name: string | null;
   type: 'luxury' | 'rugged' | 'simple' | null;
@@ -251,7 +251,7 @@ export type MAIN_NAV_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "*[_type == 'van'\n && defined(slug.current)][0...6]{\n    name,\n    type,\n    price,\n    mainImage{\n        alt,\n        asset->{\n            url\n        }\n    },\n    slug,  \n } | order(name)": VANS_QUERYResult;
+    "*[_type == 'van'\n   && defined(slug.current)][0...6]{\n      name,\n      type,\n      price,\n      mainImage{\n          alt,\n          asset->{\n              url\n          }\n      },\n      slug,  \n   } | order(name)": VANS_QUERYResult;
     "\n    *[_type == 'van'\n && slug.current == $slug][0]{\n    name,\n    type,\n    description,\n    price,\n    mainImage{\n        alt,\n        asset->{\n            url\n        }\n    },\n }": VAN_QUERYResult;
     "\n    *[_type == 'navMenu'\n && slug.current == 'main-nav-menu'][0]{\n  links[]{\n    name,\n    url}\n }": MAIN_NAV_QUERYResult;
   }
