@@ -246,6 +246,40 @@ export type MAIN_NAV_QUERYResult = {
     url: string | null;
   }> | null;
 } | null;
+// Variable: HOST_NAV_QUERY
+// Query: *[_type == 'navMenu'   && slug.current == 'host-nav-menu'][0]{    links[]{      name,      url    }  }
+export type HOST_NAV_QUERYResult = {
+  links: Array<{
+    name: string | null;
+    url: string | null;
+  }> | null;
+} | null;
+// Variable: HOST_VANS_QUERY
+// Query: *[_type == 'van'  && defined(slug.current)  && hosted == true][0...3]{  name,  price,  slug,  mainImage{    asset->{url},    alt    }  } | order(name)
+export type HOST_VANS_QUERYResult = Array<{
+  name: string | null;
+  price: number | null;
+  slug: Slug | null;
+  mainImage: {
+    asset: {
+      url: string | null;
+    } | null;
+    alt: string | null;
+  } | null;
+}>;
+// Variable: HOST_VAN_QUERY
+// Query: *[_type == 'van'    && slug.current == $slug][0]{    name,    price,    mainImage{        asset->{url},        alt        },    description,  }
+export type HOST_VAN_QUERYResult = {
+  name: string | null;
+  price: number | null;
+  mainImage: {
+    asset: {
+      url: string | null;
+    } | null;
+    alt: string | null;
+  } | null;
+  description: string | null;
+} | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -254,5 +288,8 @@ declare module '@sanity/client' {
     "*[_type == 'van'\n   && defined(slug.current)][0...6]{\n      name,\n      type,\n      price,\n      mainImage{\n          alt,\n          asset->{\n              url\n          }\n      },\n      slug,  \n   } | order(name)": VANS_QUERYResult;
     "\n    *[_type == 'van'\n && slug.current == $slug][0]{\n    name,\n    type,\n    description,\n    price,\n    mainImage{\n        alt,\n        asset->{\n            url\n        }\n    },\n }": VAN_QUERYResult;
     "\n    *[_type == 'navMenu'\n && slug.current == 'main-nav-menu'][0]{\n  links[]{\n    name,\n    url}\n }": MAIN_NAV_QUERYResult;
+    "*[_type == 'navMenu' \n  && slug.current == 'host-nav-menu'][0]{\n    links[]{\n      name,\n      url\n    }\n  }": HOST_NAV_QUERYResult;
+    "\n    *[_type == 'van'\n  && defined(slug.current)\n  && hosted == true][0...3]{\n  name,\n  price,\n  slug,\n  mainImage{\n    asset->{url},\n    alt\n    }\n  } | order(name)": HOST_VANS_QUERYResult;
+    "*[_type == 'van'\n    && slug.current == $slug][0]{\n    name,\n    price,\n    mainImage{\n        asset->{url},\n        alt\n        },\n    description,\n  }": HOST_VAN_QUERYResult;
   }
 }
