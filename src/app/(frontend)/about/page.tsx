@@ -16,7 +16,7 @@ const AboutPage = () => {
 
       <div className="px-5 py-4 flex flex-col gap-10">
         <Title size="sm">
-          Don't squeeze in a sedan when you could relax in a van.
+          Don&apos;t squeeze in a sedan when you could relax in a van.
         </Title>
 
         <p>

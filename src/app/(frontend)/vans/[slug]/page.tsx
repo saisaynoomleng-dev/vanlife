@@ -43,7 +43,7 @@ const VansDetailPage = async ({
         />
       ) : null}
 
-      <TypeBadge type={van?.type!} />
+      {van?.type && <TypeBadge type={van?.type} />}
 
       <Title size="sm" as="h2">
         {van?.name}

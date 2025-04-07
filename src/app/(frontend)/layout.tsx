@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import '../globals.css';
-import { SanityLive } from '@/sanity/lib/live';
-import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,11 +11,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <main>
-      <Header />
-      {children}
-      <SanityLive />
-    </main>
-  );
+  return <main>{children}</main>;
 }

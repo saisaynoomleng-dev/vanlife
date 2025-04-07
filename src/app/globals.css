@@ -18,6 +18,8 @@
   --font-inter: var(--font-inter);
 }
 
+@custom-variant hover (&:hover);
+
 @layer base {
   body {
     @apply min-h-screen font-normal text-base font-inter bg-brand-white text-brand-black-900;

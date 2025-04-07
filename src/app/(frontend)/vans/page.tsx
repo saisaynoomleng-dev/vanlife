@@ -1,10 +1,8 @@
 import Bounded from '@/components/Bounded';
 import Title from '@/components/Title';
 import VanCard from '@/components/VanCard';
-import { urlFor } from '@/sanity/lib/image';
 import { sanityFetch } from '@/sanity/lib/live';
 import { VANS_QUERY } from '@/sanity/lib/queries';
-import Image from 'next/image';
 
 const VansPage = async () => {
   const { data: vans } = await sanityFetch({ query: VANS_QUERY });
